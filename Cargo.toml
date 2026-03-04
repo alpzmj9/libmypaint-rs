@@ -5,6 +5,7 @@ edition = "2024"
 
 [dependencies]
 rand = "0.10.0"
+serde_json = "1.0.149"
 
 [lib]
 crate-type = ["cdylib", "staticlib"]  # 同时产出 .so 和 .a
