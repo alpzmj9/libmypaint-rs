@@ -7,3 +7,6 @@ edition = "2024"
 
 [lib]
 crate-type = ["cdylib", "staticlib"]  # 同时产出 .so 和 .a
+
+[features]
+original = []
