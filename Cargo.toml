@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+rand = "0.10.0"
 
 [lib]
 crate-type = ["cdylib", "staticlib"]  # 同时产出 .so 和 .a

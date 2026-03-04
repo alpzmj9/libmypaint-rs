@@ -1,3 +1,5 @@
+pub mod brush_modes;
+pub mod brush_settings;
 pub mod helpers;
 mod rng_double;
 pub fn add(left: u64, right: u64) -> u64 {

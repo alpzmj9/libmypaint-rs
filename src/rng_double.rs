@@ -70,7 +70,10 @@ impl RngDouble {
 
     /// 重新以给定种子初始化生成器（等价于 C 的 `rng_double_set_seed`）。
     pub fn set_seed(&mut self, seed: u64) {
-        debug_assert!(QUALITY > KK, "QUALITY must be > KK for the sentinel to work");
+        debug_assert!(
+            QUALITY > KK,
+            "QUALITY must be > KK for the sentinel to work"
+        );
 
         const ULP: f64 = (1.0 / (1u64 << 30) as f64) / (1u64 << 22) as f64; // 2^-52
 
@@ -110,7 +113,9 @@ impl RngDouble {
             if s != 0 {
                 s >>= 1;
             } else {
-                if t == 0 { break; }
+                if t == 0 {
+                    break;
+                }
                 t -= 1;
             }
         }
