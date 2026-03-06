@@ -21,3 +21,4 @@ target
 #.idea/
 
 src/brush_settings/generated.rs
+include/mypaint_rs.h

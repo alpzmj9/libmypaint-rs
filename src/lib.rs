@@ -1,6 +1,7 @@
 pub mod brush; // ✅ 公开：主引擎，外部调用 Brush + Surface
 pub mod brush_modes; // ✅ 公开：像素混合，surface 实现者需要
 pub mod brush_settings; // ✅ 公开：BrushSetting/BrushInput 枚举，配置 Brush 必须用
+pub mod ffi; // ✅ 公开：FFI 接口，供 C/C++/其他语言调用
 pub mod helpers; // ✅ 公开：颜色空间转换，surface 实现者可能需要
 pub mod mapping; // ✅ 公开：Mapping 类型，需要精细控制时使用
 pub(crate) mod rng_double; // 🔒 仅 crate 内部：实现细节，外部无需触碰

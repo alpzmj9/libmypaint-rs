@@ -2,13 +2,18 @@
 name = "mypaint-rs"
 version = "0.1.0"
 edition = "2024"
+build = "build.rs"
 
 [dependencies]
 rand = "0.10.0"
 serde_json = "1.0.149"
 
+[build-dependencies]
+serde_json = "1.0.149"   # build.rs 解析 brushsettings.json
+cbindgen   = "0.27"      # build.rs 生成 C 头文件
+
 [lib]
-crate-type = ["cdylib", "staticlib"]  # 同时产出 .so 和 .a
+crate-type = ["cdylib", "staticlib"]
 
 [features]
 original = []
