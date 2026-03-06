@@ -8,7 +8,7 @@ use std::path::Path;
 use std::process::Command;
 
 fn main() {
-    let json  = "brushsettings.json";
+    let json = "brushsettings.json";
     let script = "codegen/gen_brush_settings.py";
     let output = "src/brush_settings/generated.rs";
 
@@ -19,7 +19,7 @@ fn main() {
     // 找到可用的 Python 解释器
     let python = find_python().expect(
         "Python 3 not found. Please install Python 3 to build this project.\n\
-         Tried: python3, python"
+         Tried: python3, python",
     );
 
     let status = Command::new(&python)
