@@ -1,37 +1,26 @@
-# cbindgen.toml
-# 控制 cbindgen 如何从 Rust 源码生成 C 头文件
-
 language = "C"
-include_version = true   # 在头文件顶部写入 cbindgen 版本注释
-pragma_once = true       # 用 #pragma once 代替 include guard
-
-# 生成 typedef struct Foo Foo; 风格（C89 兼容）
+include_version = true
+pragma_once = true
 style = "both"
 usize_is_size_t = true
 
 [export]
-# 只导出带 #[no_mangle] extern "C" 的符号；
-# 如果以后要显式包含/排除某个类型，在这里填
-include = []
-exclude = []
+# 只导出 ffi 模块里的公开符号
+include = ["MyPaintBrush", "MyPaintSurface", "MyPaintSurfaceVtable"]
+# 排除纯 Rust 内部类型，避免污染头文件
+exclude = [
+    "Brush", "Mapping", "RngDouble",
+    "BrushInput", "BrushSetting", "BrushState",
+    "BrushInputInfo", "BrushSettingInfo",
+]
 
 [parse]
 parse_deps = false
+# 只解析 ffi 模块，不递归到 brush/mapping 等内部模块
+include_only_source_files = ["src/ffi.rs"]
 
 [fn]
-# 函数声明前缀（空 = 不加，保持和原 libmypaint API 兼容）
 prefix = ""
-# 在每个函数声明后加分号（C 风格）
-postfix = ""
-
-[struct]
-# 结构体成员排列方式：Rust 默认会重排，加 #[repr(C)] 后才能保证顺序
-# cbindgen 遇到没有 #[repr(C)] 的结构体会警告
 
 [enum]
-# 枚举变体命名风格：SCREAMING_SNAKE_CASE → C 惯例
 rename_variants = "ScreamingSnakeCase"
-
-[defines]
-# 可以在这里添加条件编译宏映射，例如：
-# "feature = original" = "MYPAINT_RNG_ORIGINAL"

@@ -12,6 +12,9 @@ use crate::brush_settings::generated::{
 
 // ── 不透明句柄 ────────────────────────────────────────────────────────────────
 
+/// 对外不透明的笔刷引擎句柄。
+/// C 端只持有指针，不感知内部布局。
+#[repr(C)]
 pub struct MyPaintBrush {
     inner: Brush,
 }

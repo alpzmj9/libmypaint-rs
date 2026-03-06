@@ -200,10 +200,10 @@ fn gen_c_header(root: &Path) {
     let config = cbindgen::Config::from_file(root.join("cbindgen.toml"))
         .expect("Failed to read cbindgen.toml");
 
+    // 从 crate 根开始解析（不用 with_src），cbindgen 会跟随 pub mod 递归解析
     cbindgen::Builder::new()
         .with_crate(root)
         .with_config(config)
-        .with_src(root.join("src/ffi.rs"))
         .generate()
         .expect("cbindgen failed")
         .write_to_file(&header);
