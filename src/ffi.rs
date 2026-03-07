@@ -1,5 +1,6 @@
 // ffi.rs — C ABI 导出层
-// Rust 2024 edition: #[unsafe(no_mangle)], unsafe ops 需在 unsafe{} 块中
+// Rust 2024 edition: unsafe ops 需在 unsafe{} 块中
+// #[unsafe(no_mangle)] 保持原写法以兼容 cbindgen
 
 use std::ffi::CStr;
 use std::os::raw::{c_char, c_double, c_float, c_int};
